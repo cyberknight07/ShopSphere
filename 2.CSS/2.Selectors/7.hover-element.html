@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .av-box {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(15, 177, 231);
+        color: rgb(0, 0, 0);
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+      }
+
+      .av-box:hover {
+        background-color: rgb(191, 24, 110);
+        color: white;
+      }
+
+      .av-box::first-letter {
+        font-size: 42px;
+      }
+      ul.list li:nth-child(even) {
+        background-color: lightseagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="av-box">Aviral</div>
+    <ul class="list">
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+    </ul>
+    <u>A</u>nkit Jain is <i>wo<b>r</b>king</i> at
+    <b><a href="https://vidhyaskillschool.com">VSS</a></b>
+  </body>
+</html>
