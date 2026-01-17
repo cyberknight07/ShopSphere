@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pseudo Class nth-child Demo</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      ul {
+        display: flex;
+        gap: 10px;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      li.selected {
+        border: 2px solid black;
+        transform: scale(1.1);
+      }
+
+      /* ===== PSEUDO-CLASS MAGIC ===== */
+
+      /* Red */
+      .color-red li:nth-child(odd).selected {
+        color: red;
+      }
+
+      /* Blue */
+      .color-blue li:nth-child(even).selected {
+        color: blue;
+      }
+
+      /* Green */
+      .color-green li:nth-child(3n).selected {
+        color: green;
+      }
+
+      /* Orange */
+      .color-orange li:nth-child(4n).selected {
+        color: orange;
+      }
+
+      /* Purple */
+      .color-purple li:nth-child(5n).selected {
+        color: purple;
+      }
+
+      .buttons {
+        margin-top: 20px;
+      }
+
+      button {
+        margin-right: 10px;
+        padding: 8px 14px;
+        cursor: pointer;
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Click Letter → Choose Color (using :nth-child)</h2>
+
+    <ul id="list"></ul>
+
+    <div class="buttons">
+      <button style="background: red" data-color="color-red">Red</button>
+      <button style="background: blue" data-color="color-blue">Blue</button>
+      <button style="background: green" data-color="color-green">Green</button>
+      <button style="background: orange" data-color="color-orange">
+        Orange
+      </button>
+      <button style="background: purple" data-color="color-purple">
+        Purple
+      </button>
+    </div>
+
+    <script>
+      const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+      const list = document.getElementById("list");
+      let selectedItem = null;
+
+      // create letters
+      letters.forEach((letter) => {
+        const li = document.createElement("li");
+        li.textContent = letter;
+
+        li.addEventListener("click", () => {
+          document
+            .querySelectorAll("li")
+            .forEach((el) => el.classList.remove("selected"));
+          li.classList.add("selected");
+          selectedItem = li;
+        });
+
+        list.appendChild(li);
+      });
+
+      // color buttons
+      document.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (!selectedItem) {
+            alert("Select a letter first!");
+            return;
+          }
+
+          // remove old color classes
+          list.className = "";
+
+          // add new color class
+          list.classList.add(btn.dataset.color);
+        });
+      });
+    </script>
+  </body>
+</html>
