@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Cards</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      section {
+        background-color: rgb(0, 21, 255);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px;
+      }
+
+      section div {
+        background-color: tomato;
+        color: black;
+        flex: 30%;
+        border-radius: 12px;
+        height: 200px;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+      section div:nth-child(odd) {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+      <div>D</div>
+      <div>E</div>
+      <div>F</div>
+    </section>
+  </body>
+</html>
