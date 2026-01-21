@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex:Row</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .row {
+        background-color: lightgreen;
+        padding: 12px;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .row-reverse {
+        background-color: rgb(32, 94, 114);
+        padding: 12px;
+        display: block;
+        flex-direction: row-reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="row">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+      </div>
+
+      <div class="row-reverse">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+      </div>
+    </section>
+  </body>
+</html>

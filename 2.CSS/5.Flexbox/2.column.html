@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex:Column</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .column {
+        background-color: lightgreen;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .column-reverse {
+        background-color: rgb(32, 94, 114);
+        padding: 12px;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="column">
+      <div class="item">A</div>
+      <div class="item">B</div>
+      <div class="item">C</div>
+      <div class="item">D</div>
+    </div>
+
+    <div class="column-reverse">
+      <div class="item">A</div>
+      <div class="item">B</div>
+      <div class="item">C</div>
+      <div class="item">D</div>
+    </div>
+  </body>
+</html>
