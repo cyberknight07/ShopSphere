@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big List</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 10px;
+        background: #f0f2f5;
+      }
+
+      .box {
+        display: flex;
+        background-color: #1a1a1a;
+        padding: 12px;
+        gap: 12px;
+        flex-wrap: wrap;
+        height: auto;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .item {
+        flex: 23%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        position: relative;
+      }
+
+      .item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+      }
+
+      /* Animation for initial load */
+      @keyframes slideInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.7);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Staggered animation for each item */
+      .item {
+        animation: slideInScale 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      }
+
+      .item-one {
+        animation-delay: 0s;
+      }
+      .item-two {
+        animation-delay: 0.05s;
+      }
+      .item-three {
+        animation-delay: 0.1s;
+      }
+      .item-four {
+        animation-delay: 0.15s;
+      }
+      .item-five {
+        animation-delay: 0.2s;
+      }
+      .item-six {
+        animation-delay: 0.25s;
+      }
+      .item-seven {
+        animation-delay: 0.3s;
+      }
+      .item-eight {
+        animation-delay: 0.35s;
+      }
+      .item-nine {
+        animation-delay: 0.4s;
+      }
+      .item-ten {
+        animation-delay: 0.45s;
+      }
+      .item-eleven {
+        animation-delay: 0.5s;
+      }
+      .item-twelve {
+        animation-delay: 0.55s;
+      }
+      .item-thirteen {
+        animation-delay: 0.6s;
+      }
+      .item-fourteen {
+        animation-delay: 0.65s;
+      }
+      .item-fifteen {
+        animation-delay: 0.7s;
+      }
+      .item-sixteen {
+        animation-delay: 0.75s;
+      }
+      .item-seventeen {
+        animation-delay: 0.8s;
+      }
+      .item-eighteen {
+        animation-delay: 0.85s;
+      }
+      .item-nineteen {
+        animation-delay: 0.9s;
+      }
+      .item-twenty {
+        animation-delay: 0.95s;
+      }
+
+      /* Responsive design with smooth transitions */
+      /* Extra Large screens: 4 items per row */
+      @media (min-width: 1400px) {
+        .item {
+          flex: calc(25% - 12px);
+        }
+      }
+
+      /* Large screens: 4 items per row */
+      @media (min-width: 1200px) and (max-width: 1399px) {
+        .item {
+          flex: calc(25% - 12px);
+        }
+      }
+
+      /* Medium screens: 3 items per row */
+      @media (min-width: 900px) and (max-width: 1199px) {
+        .item {
+          flex: calc(33.333% - 12px);
+        }
+      }
+
+      /* Tablet: 2 items per row */
+      @media (min-width: 600px) and (max-width: 899px) {
+        .item {
+          flex: calc(50% - 12px);
+        }
+      }
+
+      /* Mobile: 2 items per row */
+      @media (max-width: 599px) {
+        .box {
+          padding: 8px;
+          gap: 8px;
+        }
+        .item {
+          flex: calc(50% - 8px);
+          width: 50px;
+          height: 50px;
+          min-width: 50px;
+          font-size: 12px;
+        }
+      }
+
+      /* Animation for layout change */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      .box:has(.item:hover) .item:not(:hover) {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item item-one">Item 1</div>
+      <div class="item item-two">Item 2</div>
+      <div class="item item-three">Item 3</div>
+      <div class="item item-four">Item 4</div>
+      <div class="item item-five">Item 5</div>
+      <div class="item item-six">Item 6</div>
+      <div class="item item-seven">Item 7</div>
+      <div class="item item-eight">Item 8</div>
+      <div class="item item-nine">Item 9</div>
+      <div class="item item-ten">Item 10</div>
+      <div class="item item-eleven">Item 11</div>
+      <div class="item item-twelve">Item 12</div>
+      <div class="item item-thirteen">Item 13</div>
+      <div class="item item-fourteen">Item 14</div>
+      <div class="item item-fifteen">Item 15</div>
+      <div class="item item-sixteen">Item 16</div>
+      <div class="item item-seventeen">Item 17</div>
+      <div class="item item-eighteen">Item 18</div>
+      <div class="item item-nineteen">Item 19</div>
+      <div class="item item-twenty">Item 20</div>
+
+      <div class="item item-sixteen">Item 16</div>
+      <div class="item item-seventeen">Item 17</div>
+      <div class="item item-eighteen">Item 18</div>
+      <div class="item item-nineteen">Item 19</div>
+      <div class="item item-twenty">Item 20</div>
+
+      <div class="item item-sixteen">Item 16</div>
+      <div class="item item-seventeen">Item 17</div>
+      <div class="item item-eighteen">Item 18</div>
+      <div class="item item-nineteen">Item 19</div>
+      <div class="item item-twenty">Item 20</div>
+    </div>
+  </body>
+</html>
