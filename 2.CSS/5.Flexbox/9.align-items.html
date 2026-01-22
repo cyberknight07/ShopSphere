@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Align Items Example</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .box {
+        display: flex;
+        background-color: lightgreen;
+        padding: 12px;
+        gap: 12px;
+        height: 300px;
+      }
+
+      .item {
+        background-color: chocolate;
+      }
+
+      .item-one {
+        height: 100px;
+      }
+
+      .item-two {
+        height: 150px;
+      }
+      .item-three {
+        height: 75px;
+      }
+
+      .ai-fe {
+        margin-top: 12px;
+        align-items: flex-end;
+      }
+
+      .ai-center {
+        margin-top: 12px;
+        align-items: center;
+      }
+      .ai-stretch {
+        margin-top: 12px;
+        align-items: stretch;
+      }
+      .ai-baseline {
+        margin-top: 12px;
+        align-items: baseline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item item-one">Item 1</div>
+      <div class="item item-two">Item 2</div>
+      <div class="item item-three">Item 3</div>
+    </div>
+
+    <div class="box ai-fe">
+      <div class="item item-one">Item 1</div>
+      <div class="item item-two">Item 2</div>
+      <div class="item item-three">Item 3</div>
+    </div>
+
+    <div class="box ai-center">
+      <div class="item item-one">Item 1</div>
+      <div class="item item-two">Item 2</div>
+      <div class="item item-three">Item 3</div>
+    </div>
+
+    <div class="box ai-stretch">
+      <div class="item item-one">Item 1</div>
+      <div class="item item-two">Item 2</div>
+      <div class="item item-three">Item 3</div>
+    </div>
+
+    <div class="box ai-baseline">
+      <div class="item item-one">Item 1</div>
+      <div class="item item-two">Item 2</div>
+      <div class="item item-three">Item 3</div>
+    </div>
+  </body>
+</html>
