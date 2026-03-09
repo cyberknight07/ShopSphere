@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Scope</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    console.log("A before: ", a);
+    sayHi();
+    // sayHiByArrow();
+    debugger;
+    var a = 10; // global scope
+    let b = 20; // script scope
+    const c = 30; // script scope
+
+    if (true) {
+        debugger;
+        var a1Block = 10;
+        let a2 = 20;
+        const a3 = 30;
+    }
+
+    function sayHi() {
+        console.log("Inside SayHi function");
+        var a1 = "Aviral"; // block scope
+        let a2 = "Rahul"; // block scope
+        const a3 = "shruti"; // block scope
+        console.log("Hello from SayHi");
+    }
+
+    let sayHiByArrow = () => {
+        console.log("Inside sayHiByArrow function")
+    }
+
+    sayHi();
+
+    console.log("A :", a);
+    console.log("B :", b);
+    // console.log("A1: ", a1); // aviral -> Not defined
+    // console.log("A2: ", a2); // Not defined
+</script>
+
+<script>
+    var a = 10;
+    var a = 100;
+</script>
