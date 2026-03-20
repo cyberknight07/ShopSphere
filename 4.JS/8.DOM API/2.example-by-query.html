@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetings from JS</title>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome Pinki to the classes</h1>
+        <h1>Welcome Pinki to the classes</h1>
+        <h1>Welcome Pinki to the classes</h1>
+        <h1>Welcome Pinki to the classes</h1>
+        <h1>Welcome Pinki to the classes</h1>
+    </div>
+</body>
+
+</html>
+<script>
+    /**
+     * 1. Get the element
+     * 2. Update the element text
+    */
+
+    const h1Elem = document.querySelector("div h1");
+    h1Elem.textContent = "Hello Ayush to the classes";
+
+    // For all
+
+    const h1Elems = document.querySelectorAll("div h1");
+    console.log(h1Elems);
+
+    for (let i = 0; i < h1Elems.length; i++) {
+        h1Elems[i].textContent = "Hello Rahul to the classes";
+    }
+</script>
