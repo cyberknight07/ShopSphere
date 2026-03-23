@@ -18,8 +18,8 @@ const names = [
 
 const matchedName = (arr, char) => {
   const results = arr.filter((item) => {
-    const currentWordLC = item.toUpperCase();
-    if (currentWordLC.search(char.toUpperCase()) !== -1) {
+    const currentWordLC = item.toLowerCase();
+    if (currentWordLC.search(char) !== -1) {
       return true;
     }
     return false;
