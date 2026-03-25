@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Event</title>
+    <style>
+        .heading {
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="onClickBtn()"="btn-1">Click Me</button>
+    <h1 id="heading">Welcome</h1>
+</body>
+
+</html>
+
+<script>
+    // First way - Define a function & attach it to a btn or element
+    const headingElem = document.getElementById("heading");
+
+    function onClickBtn() {
+        alert("I am clicked");
+        headingElem.textContent = "Thanks for clicking";
+        headingElem.style.backgroundColor = 'red'
+        headingElem.style.padding = "12px";
+
+        headingElem.classList.add("heading")
+    }
+</script>
