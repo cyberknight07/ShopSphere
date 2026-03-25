@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactNative-like Header with Theme Toggle</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #fff;
+            color: #111;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        body.dark-theme {
+            background-color: #0f111a;
+            color: #f0f0f0;
+        }
+
+        /* Announcement bar */
+        .announcement {
+            text-align: center;
+            background: #222;
+            color: #fff;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        body.dark-theme .announcement {
+            background: #111;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.4s;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        body.dark-theme header {
+            background-color: #1a1a2e;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .logo img {
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2196F3;
+        }
+
+        /* Right icons */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-button {
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s;
+            font-size: 18px;
+        }
+
+        .icon-button:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-theme .icon-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .icon-button svg {
+            display: block;
+        }
+
+        /* Main content */
+        main {
+            padding: 40px 30px;
+        }
+
+        main h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Responsive nav */
+        @media(max-width:768px) {
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement">
+        Re-watch the latest <a href="#" style="color:#4fb0fc;">React Native Keynote</a> from React Conf 2025
+    </div>
+
+    <header>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="https://reactnative.dev/img/header_logo.svg" alt="React Native Logo">
+            React Native
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="#">Development</a>
+            <a href="#">Contributing</a>
+            <a href="#">Community</a>
+            <a href="#">Showcase</a>
+            <a href="#">Blog</a>
+        </nav>
+
+        <!-- Right icons -->
+        <div class="header-right">
+            <!-- GitHub icon -->
+            <button class="icon-button" aria-label="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+            </button>
+            <!-- Theme toggle -->
+            <button class="icon-button" id="theme-toggle" aria-label="Toggle Theme">
+                <svg id="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <!-- Search icon -->
+            <button class="icon-button" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <h1>React Native-like Website Header</h1>
+        <p>This layout mimics the React Native official website header with a logo, navigation links, and icons
+            including a theme toggle button.</p>
+        <p>Click the moon/sun icon on the right to switch between light and dark theme.</p>
+    </main>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+
+            // Toggle icon visibility
+            if (document.body.classList.contains('dark-theme')) {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
