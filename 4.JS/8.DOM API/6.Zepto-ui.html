@@ -756,7 +756,7 @@
         primaryHeaderContainer.classList.add("primary-container");
 
         // Set an image inside the box
-        const productImgElem = document.createElement("img");
+        const productImgElem = document.createElement("img"); // <img src="" />
         productImgElem.classList.add("box-item-img")
         productImgElem.src = currentProduct.image;
         primaryHeaderContainer.appendChild(productImgElem);
@@ -797,16 +797,18 @@
         const ratingAndReviewContainer = document.createElement("div");
         ratingAndReviewContainer.classList.add("item-rating-review-container");
 
-        const ratingElem = document.createElement("div");
-        ratingElem.classList.add("item-rating");
-        ratingElem.textContent = currentProduct.rating;
+        // const ratingElem = document.createElement("div");
+        // ratingElem.classList.add("item-rating");
+        // ratingElem.textContent = currentProduct.rating;
 
-        const reviewsElem = document.createElement("div");
-        reviewsElem.classList.add("item-reviews");
-        reviewsElem.textContent = `(${currentProduct.reviews})`;
+        // const reviewsElem = document.createElement("div");
+        // reviewsElem.classList.add("item-reviews");
+        // reviewsElem.textContent = `(${currentProduct.reviews})`;
 
-        ratingAndReviewContainer.appendChild(ratingElem);
-        ratingAndReviewContainer.appendChild(reviewsElem);
+        // ratingAndReviewContainer.appendChild(ratingElem);
+        // ratingAndReviewContainer.appendChild(reviewsElem);
+
+        ratingAndReviewContainer.textContent = `${currentProduct.rating} (${currentProduct.reviews})`
         secondaryHeaderContainer.appendChild(ratingAndReviewContainer)
 
 
