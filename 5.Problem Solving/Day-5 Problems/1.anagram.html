@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anagram Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+
+        .success {
+            color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Anagram Checker</h2>
+
+        <input type="text" id="str1" placeholder="Enter first word">
+        <input type="text" id="str2" placeholder="Enter second word">
+
+        <button onclick="checkAnagram()">Check</button>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        function normalize(str) {
+            return str.toLowerCase().replace(/[^a-z]/g, '').split('').sort().join('');
+        }
+
+        function checkAnagram() {
+            const str1 = document.getElementById('str1').value.trim();
+            const str2 = document.getElementById('str2').value.trim();
+            const message = document.getElementById('message');
+
+            message.textContent = "";
+            message.className = "message";
+
+            // Validation: empty input
+            if (!str1 || !str2) {
+                message.textContent = "Please enter both strings.";
+                message.classList.add("error");
+                return;
+            }
+
+            // Validation: only letters
+            const regex = /^[a-zA-Z]+$/;
+            if (!regex.test(str1) || !regex.test(str2)) {
+                message.textContent = "Only alphabetic characters are allowed.";
+                message.classList.add("error");
+                return;
+            }
+
+            // Check anagram
+            if (normalize(str1) === normalize(str2)) {
+                message.textContent = "✅ It's an Anagram!";
+                message.classList.add("success");
+            } else {
+                message.textContent = "❌ Not an Anagram.";
+                message.classList.add("error");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
