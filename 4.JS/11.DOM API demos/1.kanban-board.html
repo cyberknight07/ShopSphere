@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Kanban Board</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+    <h1 class="text-2xl font-bold mb-4">Kanban Board</h1>
+
+    <!-- Add Card -->
+    <div class="flex gap-2 mb-6">
+        <input id="cardInput" type="text" placeholder="Enter task..." class="border p-2 rounded w-80" />
+        <button onclick="addCard()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Add Card
+        </button>
+    </div>
+
+    <!-- Board -->
+    <div id="board" class="grid grid-cols-6 gap-4"></div>
+
+    <script>
+        const stages = [
+            "Draft",
+            "In progress",
+            "Development",
+            "Testing",
+            "Completed",
+            "Deployed"
+        ];
+
+        let draggedCard = null;
+
+        // Create columns
+        const board = document.getElementById("board");
+
+        stages.forEach(stage => {
+            const col = document.createElement("div");
+            col.className = "bg-white rounded shadow p-3 min-h-[400px] flex flex-col";
+            col.dataset.stage = stage;
+
+            col.innerHTML = `
+    <h2 class="font-semibold mb-2">${stage}</h2>
+    <div class="flex-1 space-y-2 dropzone"></div>
+  `;
+
+            // Drag events
+            col.querySelector(".dropzone").addEventListener("dragover", e => {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(e.currentTarget, e.clientY);
+                if (afterElement == null) {
+                    e.currentTarget.appendChild(draggedCard);
+                } else {
+                    e.currentTarget.insertBefore(draggedCard, afterElement);
+                }
+            });
+
+            board.appendChild(col);
+        });
+
+        // Add card
+        function addCard() {
+            const input = document.getElementById("cardInput");
+            const text = input.value.trim();
+            if (!text) return;
+
+            const card = createCard(text);
+
+            // Add to Draft by default
+            document.querySelector('[data-stage="Draft"] .dropzone')
+                .appendChild(card);
+
+            input.value = "";
+        }
+
+        // Create card
+        function createCard(text) {
+            const card = document.createElement("div");
+            card.className = "bg-gray-100 p-2 rounded shadow cursor-move";
+            card.draggable = true;
+            card.innerText = text;
+
+            card.addEventListener("dragstart", () => {
+                draggedCard = card;
+                setTimeout(() => card.classList.add("opacity-50"), 0);
+            });
+
+            card.addEventListener("dragend", () => {
+                draggedCard = null;
+                card.classList.remove("opacity-50");
+            });
+
+            return card;
+        }
+
+        // Reordering logic
+        function getDragAfterElement(container, y) {
+            const draggableElements = [
+                ...container.querySelectorAll("[draggable]:not(.opacity-50)")
+            ];
+
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+    </script>
+
+</body>
+
+</html>
