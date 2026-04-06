@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    const profiles = [
+        {
+            "id": 1,
+            "name": "Amit",
+            "age": 25,
+            "city": "Delhi"
+        },
+        {
+            "id": 2,
+            "name": "Riya",
+            "age": 23,
+            "city": "Mumbai"
+        },
+        {
+            "id": 3,
+            "name": "Karan",
+            "age": 28,
+            "city": "Bangalore"
+        },
+        {
+            "id": 4,
+            "name": "Sneha",
+            "age": 26,
+            "city": "Pune"
+        },
+        {
+            "id": 5,
+            "name": "Rahul",
+            "age": 30,
+            "city": "Jaipur"
+        }
+    ];
+
+    // Before
+    profiles.forEach((profile) => {
+        const msg = "Hello, my name is " + profile.name + ". I am " + profile.age + " old & i live in " + profile.city;
+        console.log(msg)
+    })
+
+    // After
+    profiles.forEach((profile) => {
+        const { name, city, age } = profile;
+        const msg = `Hello, my name ${name}. I am ${age} year old & i live in ${city}`
+    })
+
+</script>
