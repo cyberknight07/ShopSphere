@@ -1,7 +1,3 @@
-Here’s a clean and professional **README.md** documentation for your code 👇
-
----
-
 # 📘 JavaScript Object Manipulation (Spread vs Assign)
 
 This project demonstrates how JavaScript objects can be merged and manipulated using:
@@ -203,11 +199,3 @@ const deepCopy = structuredClone(nesObj);
 | --------------- | ---------- | ------------ | -------------- |
 | Spread (`...`)  | Yes        | Shallow Copy | No             |
 | Object.assign() | Yes        | Shallow Copy | Yes            |
-
----
-
-If you want, I can also:
-
-- Convert this into a **GitHub-ready project**
-- Add **examples with arrays & functions**
-- Or create **interview questions** from this topic 👍
