@@ -44,7 +44,9 @@ async function seedDatabase() {
       rating: p.rating || 0,
       stock: p.stock || 0,
       brand: p.brand,
-      createdAt: p.createdAt ? new Date(p.createdAt) : new Date(),
+      createdAt: p.createdAt
+        ? new Date(p.createdAt).toISOString()
+        : new Date().toISOString(),
     }));
 
     bulkInsertProducts(formattedProducts);

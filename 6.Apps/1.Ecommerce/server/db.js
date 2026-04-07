@@ -283,7 +283,7 @@ function bulkInsertProducts(products) {
         product.stock,
         product.brand,
         product.createdAt,
-        new Date(),
+        new Date().toISOString(),
       );
     }
   });
