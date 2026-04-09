@@ -21,13 +21,34 @@ const obj = {
 };
 
 const deletePath = (obj, path) => {
-  // your code here
+  const objCP = structuredClone(obj);
+  const keys = path.split(".");
+  let traverssed = objCP;
+
+  console.log("keys: ", keys);
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]; // a, b, c
+    const isLastIndex = i === keys.length - 1; // false, false, true
+
+    if (traverssed.hasOwnProperty(key) && isLastIndex) {
+      delete traverssed[key];
+      break;
+    }
+    if (traverssed.hasOwnProperty(key)) {
+      traverssed = traverssed[key];
+    } else {
+      return "Not allowed";
+    }
+  }
+
+  return objCP;
 };
 
-console.log(deletePath(obj, "a.b.c")); // → true
+// console.log(deletePath(obj, "a.b.c")); // → true
 // After deletion, obj becomes:
 // { a: { b: { d: 20 } } }
 
-console.log(deletePath(obj, "a.b.x")); //→ false
-console.log(deletePath(obj, "a.x.c")); //→ false
+// console.log(deletePath(obj, "a.b")); //→ false
+// console.log(deletePath(obj, "a.x.c")); //→ false
 console.log(deletePath(obj, "a.b.c.d")); //→ false
