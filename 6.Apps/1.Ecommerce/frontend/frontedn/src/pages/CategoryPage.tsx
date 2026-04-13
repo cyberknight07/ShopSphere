@@ -3,11 +3,18 @@ import { ColumnContainer } from '../components/styled-components/ColumnContainer
 import { RowContainer } from '../components/styled-components/RowContainer.styles'
 import { TextView } from '../components/styled-components/BoxView.styles'
 import BookCard from '../components/ui-components/BookCard'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 const CategoryPage = () => {
+
+  const {cat:categoryName} = useParams();
+  const [searchParams] = useSearchParams(); 
+
+  const query = searchParams.get('q');
+
   return (
     <ColumnContainer>
-      <TextView padding = {'8px 16px'} size={40} fontWeight = {800}>Books</TextView>
+      <TextView padding = {'8px 16px'} size={40} fontWeight = {800}>{categoryName ? categoryName : query}</TextView>
       <RowContainer alignItems = 'flex-start' padding = '8px'>
         <ColumnContainer flex = {0.15} padding = {'8px'}>
           <TextView size={25} fontWeight = {700}>Brand</TextView>

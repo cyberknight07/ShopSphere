@@ -5,7 +5,8 @@ type ColumnContainerProps = {
     padding?: string,
     margin?: string,
     position?: string,
-    boxShadow?: string
+    boxShadow?: string,
+    alignItems?: string
 }
 
 export const ColumnContainer = styled.div<ColumnContainerProps>`
@@ -14,6 +15,7 @@ export const ColumnContainer = styled.div<ColumnContainerProps>`
     padding: ${({padding = '0px'}) => padding};
     margin: ${({margin= '0px'}) => margin};
     flex-direction: column;
+    align-items: ${({alignItems = 'normal'}) => alignItems};
     justify-content: center;
     position: ${({position = 'static'}) => position};
     box-shadow: ${({boxShadow = '0px'}) => boxShadow};

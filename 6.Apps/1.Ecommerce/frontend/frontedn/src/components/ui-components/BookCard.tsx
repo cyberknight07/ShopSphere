@@ -1,9 +1,9 @@
-import React from "react";
 import { ColumnContainer } from "../styled-components/ColumnContainer.styles";
 import { TextView } from "../styled-components/BoxView.styles";
 import { RowContainer } from "../styled-components/RowContainer.styles";
 import { CartIcon, HeartIcon } from "./SVGIcons";
 import { colors } from "../../utililty/themeColor";
+import { Link } from "react-router-dom";
 
 const BookCard = () => {
   const data = {
@@ -21,20 +21,32 @@ const BookCard = () => {
   };
 
   return (
-    <ColumnContainer flex = {1/8} padding = {"4px 8px"} position = {'relative'} boxShadow = {'1px 1px 5px 1px'}>
+    <ColumnContainer
+      flex={1 / 8}
+      padding={"4px 8px"}
+      position={"relative"}
+      boxShadow={"1px 1px 5px 1px"}
+      
+    >
+      <Link to={`/products/${data.id}`} style={{textDecoration:'none', color:'inherit'}}>
       <img
         src={data.image}
         height="300px"
         width="250px"
-        style={{ padding: "4px 8px", objectFit: 'cover'}}
-      />
-      <div style={{position:'absolute', right: '28px', top: '20px'}}><HeartIcon size={30}/></div>
-      <TextView padding = {'0px 8px'}>{data.title}</TextView>
-      <TextView padding = {'0px 8px'}>{data.category}</TextView>
-      <RowContainer padding = {'0px 8px'}>
+        style={{ padding: "4px 8px", objectFit: "cover" }}
+        />
+      <div style={{ position: "absolute", right: "28px", top: "20px" }}>
+        <HeartIcon size={30} />
+      </div>
+      <TextView padding={"0px 8px"}>{data.title}</TextView>
+      <TextView padding={"0px 8px"}>{data.category}</TextView>
+      <RowContainer padding={"0px 8px"}>
         <TextView>{data.price}</TextView>
-        <TextView backgroundColor = {colors.neutral.shades[8]}><CartIcon/></TextView>
+        <TextView padding ={'4px'} backgroundColor={colors.neutral.shades[8]}>
+          <CartIcon />
+        </TextView>
       </RowContainer>
+      </Link>
     </ColumnContainer>
   );
 };

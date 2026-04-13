@@ -1,6 +1,6 @@
 
 import './App.css'
-import CategoryPage from './pages/CategoryPage'
+// import CategoryPage from './pages/CategoryPage'
 // import Homepage from './pages/Homepage'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       {/* <Homepage/> */}
-      <CategoryPage/>
+      {/* <CategoryPage/> */}
     </>
   )
 }
