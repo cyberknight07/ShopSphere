@@ -2,12 +2,18 @@ import type { Product } from "../components/ui-components/ProductForm";
 import { apiInterface } from "./apiInterface"
 
 type ProductParams = {
-    page?: number,
-    limit?: number,
-    search?: string,
-    category?: string ,
-    sort?: string | number
-}
+  page?: number;
+  limit?: number;
+
+  search?: string;
+  category?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  rating?: number;
+
+  sortBy: "price" | "rating" | "createdAt" | "brand";
+  sortOrder: "ASC" | "DESC";
+};
 
 export const getAllProducts = async (params?: ProductParams) => {
     const response = await apiInterface.get('/products', {params});

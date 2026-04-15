@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
             { index: true, element: <Homepage/> },
             { path: 'categories/:cat/products',  element: <CategoryPage/> },
             { path: 'products/:id',  element: <ProductPage/> },
-            { path: 'search',  element: <CategoryPage/> },
+            { path: 'products/search',  element: <CategoryPage/> },
             { path: 'my-products',  element: <SellerProductPage/>},
             { path: 'my-products/create-product',  element: <AddProduct/> },
             { path: 'my-products/update-product/:id',  element: <EditProductPage/> },
