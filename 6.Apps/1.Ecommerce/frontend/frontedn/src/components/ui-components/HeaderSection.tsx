@@ -8,7 +8,7 @@ const HeaderSection = () => {
   return (
     <Header>
        <RowContainer>
-        <span style={{color: colors.primary.base, fontSize: 32, fontWeight: 800}}>Digital Atrium</span>
+        <span style={{color: colors.primary.base, fontSize: 32, fontWeight: 800}} onclick = {()=> {n}}>Digital Atrium</span>
        </RowContainer>
        <RowContainer>
         <input type='text' placeholder='Search the desire' style={{backgroundColor:colors.neutral.shades[7], color: colors.neutral.shades[5]}} />

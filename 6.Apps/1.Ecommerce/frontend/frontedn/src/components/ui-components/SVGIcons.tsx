@@ -43,6 +43,20 @@ export const ArrowRightIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
+/* ➡️ Arrow Left */
+export const ArrowLeftIcon = ({ size = defaultSize, ...props }: IconProps) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
+    <path
+      d="M15 6l-6 6 6 6"
+      fill="currectColor"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 /* 🏢 Business Icon */
 export const BusinessIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>

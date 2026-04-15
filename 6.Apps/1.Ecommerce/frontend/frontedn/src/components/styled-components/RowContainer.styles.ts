@@ -21,5 +21,6 @@ export const RowContainer = styled.div<RowContainerProps>`
     justify-content:${({justifyContent = 'space-between'}) => justifyContent};
     gap: 10px;
     overflow-x: ${({overflowX = 'hidden'}) => overflowX};
+    scroll-behavior: 'smooth';
     border-radius: ${({borderRadius = '0px'}) => borderRadius};
 `

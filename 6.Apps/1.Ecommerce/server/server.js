@@ -3,6 +3,12 @@ const fastify = require("fastify")({ logger: true });
 const swagger = require("@fastify/swagger");
 const swaggerUI = require("@fastify/swagger-ui");
 
+
+fastify.register(require('@fastify/cors'), {
+  origin: true // allow all origins
+});
+
+
 const {
   initializeDatabase,
   getProducts,

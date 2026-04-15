@@ -6,7 +6,8 @@ type ColumnContainerProps = {
     margin?: string,
     position?: string,
     boxShadow?: string,
-    alignItems?: string
+    alignItems?: string,
+    top?: string | number // Need to ask
 }
 
 export const ColumnContainer = styled.div<ColumnContainerProps>`
@@ -18,5 +19,10 @@ export const ColumnContainer = styled.div<ColumnContainerProps>`
     align-items: ${({alignItems = 'normal'}) => alignItems};
     justify-content: center;
     position: ${({position = 'static'}) => position};
-    box-shadow: ${({boxShadow = '0px'}) => boxShadow};
+    top: ${({top = 'none'}) => top};
+    text-decoration: wavy;
+    
+    &:hover{
+        box-shadow: ${({boxShadow = '0px'}) => boxShadow};
+    }
 `

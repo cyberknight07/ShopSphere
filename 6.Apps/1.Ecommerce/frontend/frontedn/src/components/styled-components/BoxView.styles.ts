@@ -12,6 +12,12 @@ type SpanProps = {
     justifyContent?: string
     borderRadius?: string
     flexWrap?: string
+    cursor?: string,
+    opacity?: string | number,
+    position?: string
+    right?: string | number,
+    bottom?: string | number,
+     
 
 }
 
@@ -33,6 +39,15 @@ export const TextView = styled.span<SpanProps>`
     gap: 10px;
     color: ${({color = "#000"}) => color };
     background-color: ${({backgroundColor = "none"}) => backgroundColor };
+    opacity: ${({opacity = 1}) => opacity};
+    position: ${({position = 'static'}) => position};
+    right: ${({right= '0px'}) => right};
+    bottom: ${({bottom= '0px'}) => bottom};
+    
 
+    &:hover{
+        cursor: ${({cursor = 'normal'}) => cursor};
+        
+    }
 
 `

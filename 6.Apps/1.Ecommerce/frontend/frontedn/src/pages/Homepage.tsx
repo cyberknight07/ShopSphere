@@ -12,7 +12,6 @@ const Homepage = () => {
   useEffect(  () => {
     const fetchCategories = async () => {
           const data = await getAllCategories();
-
           setCategories(data);
         }
 
@@ -29,8 +28,7 @@ const Homepage = () => {
     <ColumnContainer>
       <HeroSection/>
       {categories.map((category) => {
-        console.log(category)
-        return <BooksSection/>
+        return <BooksSection category = {category}/>
       })}
 
     </ColumnContainer>

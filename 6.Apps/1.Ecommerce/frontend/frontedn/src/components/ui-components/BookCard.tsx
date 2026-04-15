@@ -4,28 +4,33 @@ import { RowContainer } from "../styled-components/RowContainer.styles";
 import { CartIcon, HeartIcon } from "./SVGIcons";
 import { colors } from "../../utililty/themeColor";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const BookCard = () => {
-  const data = {
-    id: 152,
-    title: "Penguin Atomic Habits Non-Fiction",
-    description:
-      "Buy the Penguin Atomic Habits Non-Fiction from Penguin. Non-Fiction engineered for quality and value. Ideal for books needs.",
-    price: 16.04,
-    category: "Books",
-    rating: 1.9,
-    stock: 88,
-    brand: "Penguin",
-    image: "",
-    createdAt: "2025-08-31T05:00:05.452Z",
-  };
+const BookCard = (props : any) => {
+
+  const { isCartAdded, setIsCartAdded} = useState<boolean>(false);
+  const { count, setCount} = useState<number>(1);
+  const {data} = props;;
+  // const data = {
+  //   id: 152,
+  //   title: "Penguin Atomic Habits Non-Fiction",
+  //   description:
+  //     "Buy the Penguin Atomic Habits Non-Fiction from Penguin. Non-Fiction engineered for quality and value. Ideal for books needs.",
+  //   price: 16.04,
+  //   category: "Books",
+  //   rating: 1.9,
+  //   stock: 88,
+  //   brand: "Penguin",
+  //   image: "",
+  //   createdAt: "2025-08-31T05:00:05.452Z",
+  // };
 
   return (
     <ColumnContainer
       flex={1 / 8}
       padding={"4px 8px"}
       position={"relative"}
-      boxShadow={"1px 1px 5px 1px"}
+      boxShadow={"0px 0px 3px 0px"}
       
     >
       <Link to={`/products/${data.id}`} style={{textDecoration:'none', color:'inherit'}}>
@@ -40,13 +45,15 @@ const BookCard = () => {
       </div>
       <TextView padding={"0px 8px"}>{data.title}</TextView>
       <TextView padding={"0px 8px"}>{data.category}</TextView>
+      </Link>
       <RowContainer padding={"0px 8px"}>
         <TextView>{data.price}</TextView>
         <TextView padding ={'4px'} backgroundColor={colors.neutral.shades[8]}>
-          <CartIcon />
+          {
+            isCartAdded ? count : <CartIcon />
+          }
         </TextView>
       </RowContainer>
-      </Link>
     </ColumnContainer>
   );
 };
