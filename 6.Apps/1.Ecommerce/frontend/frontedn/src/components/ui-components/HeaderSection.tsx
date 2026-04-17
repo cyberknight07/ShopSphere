@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { colors } from "../../utililty/themeColor";
+import CartButtonIcon from "../../pages/CartButtonIcon";
 import { Header } from "../styled-components/Header.styles";
 import { RowContainer } from "../styled-components/RowContainer.styles";
-import { colors } from "../../utililty/themeColor";
-import { CartIcon, LoginIcon } from "./SVGIcons";
-import { useNavigate } from "react-router-dom";
+import { LoginIcon } from "./SVGIcons";
 
 const HeaderSection = () => {
   const [search, setSearch] = useState<string>("");
@@ -31,20 +32,20 @@ const HeaderSection = () => {
           placeholder="Search the desire"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            if ((e.key === "Enter")) {
+          onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter") {
               handleSearch();
             }
           }}
           style={{
             backgroundColor: colors.neutral.shades[7],
             color: colors.neutral.shades[5],
-            padding: "8px 12px"
+            padding: "8px 12px",
           }}
         />
-        <button>
-          <CartIcon size={24} />
-        </button>
+
+        <CartButtonIcon />
+
         <button>
           <LoginIcon size={24} />
         </button>

@@ -1,109 +1,106 @@
+import { apiInterface } from "./apiInterface";
 import type { Product } from "../components/ui-components/ProductForm";
-import { apiInterface } from "./apiInterface"
 
 type ProductParams = {
   page?: number;
   limit?: number;
-
   search?: string;
   category?: string;
   minPrice?: number;
   maxPrice?: number;
   rating?: number;
-
-  sortBy: "price" | "rating" | "createdAt" | "brand";
-  sortOrder: "ASC" | "DESC";
+  sortBy?: "price" | "rating" | "createdAt" | "brand";
+  sortOrder?: "ASC" | "DESC";
 };
 
 export const getAllProducts = async (params?: ProductParams) => {
-    const response = await apiInterface.get('/products', {params});
-    
-    if(response.data === null){
-        return "Something went wrong in GetAllProducts."
-    }
+  const response = await apiInterface.get("/products", {
+    params: {
+      sortBy: "createdAt",
+      sortOrder: "DESC",
+      ...params,
+    },
+  });
 
-    return response.data;
-} 
+  if (response.data === null) {
+    return "Something went wrong in GetAllProducts.";
+  }
+
+  return response.data;
+};
 
 export const getProductById = async (id: number | string) => {
-    const response = await apiInterface.get(`/products/${id}`);
+  const response = await apiInterface.get(`/products/${id}`);
 
-    if(response.data === null){
-        return "Something went wrong in GetProductById."
-    }
+  if (response.data === null) {
+    return "Something went wrong in GetProductById.";
+  }
 
-    return response.data;
-}
+  return response.data;
+};
 
 export const getAllCategories = async () => {
-    const response = await apiInterface.get('/categories');
+  const response = await apiInterface.get("/categories");
 
-    if(response.data === null) {
-        return 'Something went wrong in GetAllCategories'
-    }
-    return response.data;
-}
+  if (response.data === null) {
+    return "Something went wrong in GetAllCategories";
+  }
+
+  return response.data;
+};
 
 export const postProduct = async (data: Product) => {
-    const response = await apiInterface.post('/products', data);
+  const response = await apiInterface.post("/products", data);
 
-    if(response.data === null){
-        return 'Something went wrong in postProduct'
-    }
+  if (response.data === null) {
+    return "Something went wrong in postProduct";
+  }
 
-    return response.data;
-}
+  return response.data;
+};
 
 export const updateProduct = async (data: Product, id: string | number) => {
-    const response = await apiInterface.patch(`/products/${id}`, data);
+  const response = await apiInterface.patch(`/products/${id}`, data);
 
-    if(response.data === null){
-        return 'Something went wrong in postProduct'
+  if (response.data === null) {
+    return "Something went wrong in postProduct";
+  }
+
+  return response.data;
+};
+
+export const fetchProducts = async (category?: string) => {
+  try {
+    const response = await getAllProducts({
+      limit: 12,
+      category,
+    });
+
+    if (typeof response === "string") {
+      return response;
     }
 
     return response.data;
-}
-
-
-/////////////////////////////////////////////////////////////////////////////////
-//API FUNCTIONS
-
-export const fetchProducts = async (category?: string) => {
-      try {
-        const response = await getAllProducts({
-          limit: 12,
-          category: category,
-        });
-
-        return response.data;
-        
-      } catch (error) {
-        console.log("Book Section " + error);
-        return ("Book Section " + error);
-      }
-    };
-
+  } catch (error) {
+    console.log("Book Section " + error);
+    return "Book Section " + error;
+  }
+};
 
 export const postProductFunc = async (data: Product) => {
-   try {
+  try {
     const res = await postProduct(data);
-    
     return res.data;
-
   } catch (err) {
-    
     return err;
   }
 };
 
-export const updateProductFunc = async (data: Product, id: string| number) => {
-   try {
+export const updateProductFunc = async (data: Product, id: string | number) => {
+  try {
     const res = await updateProduct(data, id);
-     
     return res.data;
-
   } catch (err) {
-    
     return err;
   }
 };

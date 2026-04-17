@@ -6,7 +6,6 @@ type IconProps = React.SVGProps<SVGSVGElement> & {
 
 const defaultSize = 24;
 
-/* 🛒 Cart Icon */
 export const CartIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
@@ -16,7 +15,32 @@ export const CartIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
-/* 👤 Login / User Icon */
+export const PlusIcon = ({ size = defaultSize, ...props }: IconProps) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
+    <path
+      d="M12 5v14M5 12h14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const MinusIcon = ({ size = defaultSize, ...props }: IconProps) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
+    <path
+      d="M5 12h14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const LoginIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
@@ -26,7 +50,6 @@ export const LoginIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
-/* 🔍 Search Icon */
 export const SearchIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
@@ -36,14 +59,12 @@ export const SearchIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
-/* ➡️ Arrow Right */
 export const ArrowRightIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path d="M10 17l5-5-5-5v10z" fill="currentColor" />
   </svg>
 );
 
-/* ➡️ Arrow Left */
 export const ArrowLeftIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
@@ -57,7 +78,6 @@ export const ArrowLeftIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
-/* 🏢 Business Icon */
 export const BusinessIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
@@ -67,7 +87,6 @@ export const BusinessIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
-/* ❤️ Heart Icon */
 export const HeartIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
@@ -81,7 +100,6 @@ export const HeartIcon = ({ size = defaultSize, ...props }: IconProps) => (
   </svg>
 );
 
-/* ⭐ StarFilledIcon */
 export const StarFilledIcon = ({ size = defaultSize, ...props }: IconProps) => (
   <svg viewBox="0 0 24 24" width={size} height={size} {...props}>
     <path
